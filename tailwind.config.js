@@ -29,6 +29,109 @@ export default {
           purple: "#9290FE",
         },
       },
+      fontFamily: {
+        barlow: "Barlow",
+      },
+      fontSize: {
+        "heading-h2": [
+          "20px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "600",
+          },
+        ],
+        "heading-h1": [
+          "28px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "600",
+          },
+        ],
+        "body-large-semibold": [
+          "16px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "600",
+          },
+        ],
+        "body-large-medium": [
+          "16px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "500",
+          },
+        ],
+        "body-large-regular": [
+          "16px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "400",
+          },
+        ],
+        "body-normal-semibold": [
+          "14px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "600",
+          },
+        ],
+        "body-normal-medium": [
+          "14px",
+          {
+            lineHeight: "1.3rem",
+            fontWeight: "500",
+          },
+        ],
+        "body-normal-regular": [
+          "14px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "400",
+          },
+        ],
+        "body-small-medium": [
+          "12px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "500",
+          },
+        ],
+        "body-small-regular": [
+          "12px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "400",
+          },
+        ],
+        "button-normal-semibold": [
+          "14px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "600",
+          },
+        ],
+        "button-small-semibold": [
+          "12px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "600",
+          },
+        ],
+        "display-20px": [
+          "20px",
+          {
+            lineHeight: "1.2rem",
+            fontWeight: "400",
+          },
+        ],
+        "display-32px": [
+          "32px",
+          {
+            lineHeight: "1.4rem",
+            fontWeight: "600",
+          },
+        ],
+      },
     },
   },
   plugins: [],

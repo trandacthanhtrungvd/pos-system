@@ -14,7 +14,7 @@ const FeedbackStatus = ({ status }) => {
   };
 
   return (
-    <div className={`inline-flex h-6 w-24 items-center justify-center gap-2.5 rounded-3xl bg-opacity-25 px-3 py-1 font-['Barlow'] text-sm font-medium leading-tight ${statusFormat[status]}`}>
+    <div className={`inline-flex h-6 w-24 items-center justify-center gap-2.5 rounded-3xl bg-opacity-25 px-3 py-1 font-barlow text-body-normal-medium ${statusFormat[status]}`}>
       {statusText[status]}
     </div>
   );
