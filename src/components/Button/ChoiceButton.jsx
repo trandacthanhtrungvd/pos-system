@@ -6,7 +6,7 @@ const ChoiceButton = ({ text, status = false }) => {
   const [chosen, setChosen] = useState(status);
   const statusFormat = {
     true: "bg-primary text-white border-primary",
-    false: "bg-base-dark-bg-2 text-primary border-base-dark-line border-[0.0625px] -outline-offset-1",
+    false: "bg-base-dark-bg-2 text-primary border-base-dark-line border-[1px] -outline-offset-1",
   };
 
   const handleClick = () => {
@@ -25,7 +25,7 @@ const ChoiceButton = ({ text, status = false }) => {
 
 ChoiceButton.propTypes = {
   text: PropTypes.string.isRequired,
-  status: PropTypes.oneOf([true, false]),
+  status: PropTypes.bool,
 };
 
 export default ChoiceButton;
