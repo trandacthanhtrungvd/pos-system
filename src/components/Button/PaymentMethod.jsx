@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Check } from "../../assets/icons";
+import { Check } from "@icons";
 
 const PaymentMethod = ({ icon, text, status = false }) => {
   const [chosen, setChosen] = useState(status);
