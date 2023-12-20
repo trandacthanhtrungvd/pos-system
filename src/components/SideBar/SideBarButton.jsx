@@ -1,13 +1,17 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { Link, NavLink } from "react-router-dom";
 
-const SideBarButton = ({ icon, isActive, onClick }) => {
+const SideBarButton = ({ icon, isActive, onClick, route }) => {
+  // Check pathname in order to know active state
+  isActive = route === location.pathname;
+
   const statusFormat = {
     true: "rounded-lg bg-primary text-white drop-shadow-[0_8px_24px_rgba(234,124,105,0.32)]",
     false: "text-primary",
   };
-
+  
   const bgTop = (
     <svg
       width="12"
@@ -19,7 +23,6 @@ const SideBarButton = ({ icon, isActive, onClick }) => {
       <path d="M8.5 8C12.5 4 12 0 12 0V12H0C0 12 4.5 12 8.5 8Z" />
     </svg>
   );
-
   const bgBottom = (
     <svg
       width="12"
@@ -33,11 +36,18 @@ const SideBarButton = ({ icon, isActive, onClick }) => {
   );
 
   return (
-    <button
-      className={`flex items-end h-[6.375rem] w-[5.75rem] flex-col`}
+    <NavLink
+      to={route}
+      className={`flex h-[6.375rem] w-[5.75rem] flex-col items-end`}
       onClick={onClick}
     >
-      <div className={`${isActive ? "text-base-dark-bg-1" : "text-base-dark-bg-2"}`}>{bgTop}</div>
+      <div
+        className={`${
+          isActive ? "text-base-dark-bg-1" : "text-base-dark-bg-2"
+        }`}
+      >
+        {bgTop}
+      </div>
       <div
         className={`flex h-20 w-[5.75rem] items-center rounded-l-[10px] ${
           isActive ? "bg-base-dark-bg-1" : "bg-base-dark-bg-2"
@@ -45,8 +55,14 @@ const SideBarButton = ({ icon, isActive, onClick }) => {
       >
         <div className={`ml-3 p-4 ${statusFormat[isActive]}`}>{icon}</div>
       </div>
-      <div className={`${isActive ? "text-base-dark-bg-1" : "text-base-dark-bg-2"}`}>{bgBottom}</div>
-    </button>
+      <div
+        className={`${
+          isActive ? "text-base-dark-bg-1" : "text-base-dark-bg-2"
+        }`}
+      >
+        {bgBottom}
+      </div>
+    </NavLink>
   );
 };
 
@@ -54,6 +70,7 @@ SideBarButton.propTypes = {
   icon: PropTypes.element.isRequired,
   isActive: PropTypes.bool,
   onClick: PropTypes.func,
+  route: PropTypes.string,
 };
 
 export default SideBarButton;

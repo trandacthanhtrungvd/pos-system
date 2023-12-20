@@ -10,17 +10,41 @@ import {
   Room,
   Settings,
   Logout,
-} from "../../assets/icons/index.js";
+} from "@icons";
 
 const SideBar = () => {
   const [activeButton, setActiveButton] = useState();
   const iconList = [
-    { id: "bell", icon: <Bell /> },
-    { id: "room", icon: <Room /> },
-    { id: "promos", icon: <Promos /> },
-    { id: "dashboard", icon: <Dashboard /> },
-    { id: "notification", icon: <Notification /> },
-    { id: "settings", icon: <Settings /> },
+    {
+      id: "bell",
+      icon: <Bell />,
+      route: "/drinks",
+    },
+    {
+      id: "room",
+      icon: <Room />,
+      route: "/rooms",
+    },
+    {
+      id: "promos",
+      icon: <Promos />,
+      route: "/promos",
+    },
+    {
+      id: "dashboard",
+      icon: <Dashboard />,
+      route: "/dashboard",
+    },
+    {
+      id: "notification",
+      icon: <Notification />,
+      route: "/notification",
+    },
+    {
+      id: "settings",
+      icon: <Settings />,
+      route: "/settings",
+    },
   ];
   const logoSvg = (
     <svg
@@ -51,7 +75,7 @@ const SideBar = () => {
   );
 
   return (
-    <div className="flex h-screen w-[6.5rem] flex-col items-center justify-between bg-base-dark-bg-2">
+    <div className="flex h-screen w-[6.5rem] flex-shrink-0 flex-col items-center justify-between bg-base-dark-bg-2">
       <div className="mb-4 mt-6 rounded-xl bg-[rgba(235,150,106,0.26)] p-2">
         {logoSvg}
       </div>
@@ -62,6 +86,7 @@ const SideBar = () => {
             icon={item.icon}
             isActive={activeButton === item.id}
             onClick={() => setActiveButton(item.id)}
+            route={item.route}
           />
         ))}
       </div>
