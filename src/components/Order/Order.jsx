@@ -6,22 +6,7 @@ import { OrderContext } from "@/App.jsx";
 
 const Order = () => {
   const OrderData = useContext(OrderContext);
-  const { orderedItems, setOrderedItems } = OrderData;
-
-  const handleDelete = (e) => {
-    setOrderedItems((prev) => prev.filter((item) => item.id != e.target.id));
-  };
-
-  const handleQtyChange = (e) => {
-    setOrderedItems((prev) => {
-      return prev.map((item) => {
-        if (item.id === e.target.id) {
-          item.qty = e.target.value;
-        }
-        return item;
-      });
-    });
-  };
+  const { orderedItems } = OrderData;
 
   return (
     <div className="flex h-full w-[409px] flex-shrink-0 flex-col bg-base-dark-bg-2 p-6 font-barlow text-white">
@@ -41,8 +26,8 @@ const Order = () => {
             id={item.id}
             name={item.name}
             price={item.price}
-            image={item.image}
-            handleDelete={handleDelete}
+            qty={item.qty}
+            notes={item.notes}
           />
         ))}
       </div>
@@ -52,9 +37,9 @@ const Order = () => {
       <div className="mb-2 flex justify-between">
         <div>Total</div>
         <div>
-          {orderedItems.reduce((prev, curr) => {
+          {parseFloat(orderedItems.reduce((prev, curr) => {
             return prev + curr.price * curr.qty;
-          }, 0)}
+          }, 0)).toFixed(2)}
         </div>
       </div>
       <CustomButton
