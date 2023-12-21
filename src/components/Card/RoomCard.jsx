@@ -1,34 +1,62 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import RoomStatus from "@components/Status/RoomStatus.jsx";
 import { twMerge } from "tailwind-merge";
+import RoomStatus from "@components/Status/RoomStatus.jsx";
+import { OrderContext } from "@/App";
 
 const RoomCard = ({
-  roomImage = "https://picsum.photos/250/200",
+  id,
+  name,
+  description,
+  price,
+  roomImage,
   status = true,
   className,
 }) => {
+  const OrderData = useContext(OrderContext);
+  const { setOrderedItems } = OrderData;
+  const handleAddClick = () => {
+    setOrderedItems((prev) => {
+      let curr = [];
+      let found = false;
+      prev.forEach((item) => {
+        if (item.id == id) {
+          ++item.qty;
+          found = true;
+        }
+        curr.push(item);
+      });
+      if (!found) {
+        curr.push({ id, name, price, qty: 1, notes: "" });
+      }
+      return curr;
+    });
+  };
   return (
     <div
       className={twMerge(
-        "flex min-h-fit w-full min-w-fit items-center justify-between rounded-2xl bg-base-dark-bg-2 p-6 font-barlow text-white",
+        "mb-4 flex min-h-fit w-full min-w-fit items-center justify-between rounded-2xl bg-base-dark-bg-2 p-6 font-barlow text-white",
         className,
       )}
     >
-      <img className="mr-4 rounded-lg" src={roomImage} alt="room-image" />
-      <div className="flex h-full flex-grow flex-col self-start">
-        <p className="mb-2 text-body-large-semiboldko">Study Room 1</p>
-        <p className="text-body-small-regular">
-          Some description of the room <br />
-          Facilities <br />
-          Tables, Chairs <br />
-          Projectors <br />
-          TVs...
-        </p>
+      <img
+        className="mr-4 h-28 w-40 rounded-lg"
+        src={roomImage}
+        alt="room-image"
+      />
+      <div className="flex h-full flex-col self-start">
+        <p className="mb-2 text-xl font-semibold">{name}</p>
+        <p className="max-w-md text-body-large-regular">{description}</p>
       </div>
       <RoomStatus status={status} />
-      <div className="ml-6">50.000 VND/hr</div>
+      <div className="ml-6 text-body-large-regular">{price} VND/hr</div>
+      <button
+        onClick={handleAddClick}
+        className="ml-4 rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white"
+      >
+        Add to cart
+      </button>
     </div>
   );
 };

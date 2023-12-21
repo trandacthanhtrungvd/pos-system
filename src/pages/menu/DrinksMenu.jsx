@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import DrinkCard from "@components/Card/DrinkCard";
-import { OrderContext } from "@/App.jsx";
 
 const DrinksMenu = () => {
   // Fetch API from server
@@ -18,7 +17,7 @@ const DrinksMenu = () => {
       {data.map((item) => (
         <DrinkCard
           key={item.id}
-          id={item.id}
+          id={"drink-" + item.id}
           image={item.image_url}
           name={item.name}
           price={item.price}
