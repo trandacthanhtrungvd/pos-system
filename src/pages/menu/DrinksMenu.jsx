@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DrinkCard from "@components/Card/DrinkCard";
+import { DrinksMenuContext } from "@/App";
 
 const DrinksMenu = () => {
-  // Fetch API from server
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fake-coffee-api.vercel.app/api")
-      .then((response) => response.json())
-      .then((json) => setData(json));
-  }, []);
+  const DrinksMenuData = useContext(DrinksMenuContext);
+  const { drinksMenu } = DrinksMenuData;
 
   return (
     <div className="grid w-full grid-cols-3 overflow-y-auto no-scrollbar">
       {/* Drink Cards */}
-      {data.map((item) => (
+      {drinksMenu.map((item) => (
         <DrinkCard
           key={item.id}
           id={"drink-" + item.id}

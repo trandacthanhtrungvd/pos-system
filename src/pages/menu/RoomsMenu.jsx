@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import RoomCard from "@components/Card/RoomCard";
+import { RoomsMenuContext } from "@/App";
 
 const RoomsMenu = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch("https://fake-coffee-api.vercel.app/api")
-      .then((response) => response.json())
-      .then((json) => setData(json));
-  }, []);
+  const RoomsMenuData = useContext(RoomsMenuContext);
+  const { roomsMenu } = RoomsMenuData;
 
   return (
     <div className="w-full overflow-y-auto no-scrollbar">
-      {data.map((item) => (
+      {roomsMenu.map((item) => (
         <RoomCard
           key={item.id}
           id={"room-" + item.id}
