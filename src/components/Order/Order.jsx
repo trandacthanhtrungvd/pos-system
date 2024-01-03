@@ -32,8 +32,6 @@ const Order = () => {
         ))}
       </div>
       <hr />
-      <div className="mb-2 mt-2">Subtotal</div>
-      <div className="mb-2">Discount</div>
       <div className="mb-2 flex justify-between">
         <div>Total</div>
         <div>
