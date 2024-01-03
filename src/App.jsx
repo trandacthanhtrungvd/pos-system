@@ -31,7 +31,7 @@ function App() {
     fetch("https://fake-coffee-api.vercel.app/api")
       .then((response) => response.json())
       .then((json) => setRoomsMenu(json));
-  });
+  }, []);
 
   return (
     <OrderContext.Provider value={{ orderedItems, setOrderedItems }}>
