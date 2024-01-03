@@ -86,7 +86,7 @@ const DrinkCard = ({ id, image, name, price }) => {
             onClick={handleAddClick}
             className="rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-white"
           >
-            Add to cart
+            Thêm
           </button>
         </div>
       </div>

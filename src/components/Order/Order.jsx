@@ -12,10 +12,10 @@ const Order = () => {
     <div className="flex h-full w-[409px] flex-shrink-0 flex-col bg-base-dark-bg-2 p-6 font-barlow text-white">
       <div className="mb-4 text-heading-h2">Order #34562</div>
       <div className="mb-4 flex justify-between">
-        <div className="basis-1/2">Item</div>
+        <div className="basis-1/2">Tên</div>
         <div className="flex basis-2/5 justify-between">
-          <div className="ml-2">Qty</div>
-          <div>Price</div>
+          <div className="ml-2">Số lượng</div>
+          <div>Giá</div>
         </div>
       </div>
       <hr />
@@ -32,8 +32,8 @@ const Order = () => {
         ))}
       </div>
       <hr />
-      <div className="mb-2 flex justify-between">
-        <div>Total</div>
+      <div className="my-2 flex justify-between">
+        <div>Tổng</div>
         <div>
           {parseFloat(orderedItems.reduce((prev, curr) => {
             return prev + curr.price * curr.qty;
@@ -41,7 +41,7 @@ const Order = () => {
         </div>
       </div>
       <CustomButton
-        text="Continue to Payment"
+        text="Thanh toán"
         type="fill"
         className={"w-full"}
       />
