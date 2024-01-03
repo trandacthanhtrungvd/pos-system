@@ -2,22 +2,21 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const ChoiceButton = ({ text, status = false }) => {
+const ChoiceButton = ({ text, status = false, handleClick }) => {
   const [chosen, setChosen] = useState(status);
   const statusFormat = {
-    true: "bg-primary text-white border-primary",
+    true: "bg-primary text-white",
     false:
       "bg-base-dark-bg-2 text-primary border-base-dark-line border-[1px] -outline-offset-1",
   };
 
-  const handleClick = () => {
-    setChosen(!chosen);
-  };
-
   return (
     <button
-      className={`inline-flex h-8 min-w-min items-center justify-center gap-2.5 rounded-lg px-3 py-[0.4375rem] font-semibold ${statusFormat[chosen]}`}
-      onClick={handleClick}
+      className={`inline-flex h-8 min-w-min items-center justify-center gap-2.5 rounded-lg px-3 py-[0.4375rem] font-medium ${statusFormat[chosen]}`}
+      onClick={() => {
+        handleClick();
+        setChosen(!chosen);
+      }}
     >
       {text}
     </button>
