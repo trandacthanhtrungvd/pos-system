@@ -1,15 +1,14 @@
-import { Edit, Trash } from "@icons";
+import { Add, Edit, Trash } from "@icons";
 import React, { useState } from "react";
 
-const EditDrinkCard = ({ id, name, price, image_url }) => {
+const AddDrinkCard = () => {
   // type: details, edit?
-  const [details, setDetails] = useState(true);
+  const [isDefault, setIsDefault] = useState(true);
 
   const [data, setData] = useState({
-    id: id,
-    name: name,
-    price: price,
-    image_url: image_url,
+    name: "",
+    price: 0,
+    image_url: "",
   });
 
   const handleInputChange = (e) => {
@@ -23,28 +22,13 @@ const EditDrinkCard = ({ id, name, price, image_url }) => {
     });
   };
 
-  var detailsCard = (
-    <div className="flex h-[332px] flex-col justify-between rounded-lg border border-base-dark-line bg-base-dark-bg-2">
-      <div className="mx-auto flex w-36 flex-col">
-        <div className="flex flex-col items-center gap-4 pb-4 pt-6">
-          <img
-            src={image_url}
-            alt="drink-img"
-            className="h-36 w-36 rounded-full"
-          />
-          <div className="flex flex-col text-center">
-            <div>{data.name}</div>
-            <div>$ {data.price}</div>
-          </div>
-        </div>
-      </div>
-      <button
-        onClick={() => setDetails(false)}
-        className="flex w-full justify-center gap-2 bg-primary bg-opacity-25 py-4 text-center text-primary"
-      >
-        <Edit />
-        Edit
-      </button>
+  var defaultCard = (
+    <div
+      className="flex flex-col gap-4 h-[332px] cursor-pointer items-center justify-center rounded-lg border border-dashed border-primary bg-base-dark-bg-2 text-primary"
+      onClick={() => setIsDefault((prev) => !prev)}
+    >
+      <Add />
+      Add new drink
     </div>
   );
 
@@ -87,21 +71,9 @@ const EditDrinkCard = ({ id, name, price, image_url }) => {
       </form>
       <div className="flex">
         <button
-          className="flex w-full justify-center gap-2 bg-accents-red bg-opacity-25 py-4 text-center text-accents-red"
-          onClick={() => {
-            // TODO: Handle delete drink -> Send data to API
-
-            // Change back to details
-            setDetails(true);
-          }}
-        >
-          <Trash />
-          Delete
-        </button>
-        <button
           className="flex w-full justify-center gap-2 bg-accents-green bg-opacity-25 py-4 text-center text-accents-green"
           onClick={() => {
-            // TODO: Handle edit drink -> Send data to API
+            // TODO: Handle add drink -> Send data to API
             // If updated successfully -> Show success dialog
             // fetch("#", {
             //   method: "POST",
@@ -116,17 +88,17 @@ const EditDrinkCard = ({ id, name, price, image_url }) => {
             //   .catch((err) => console.log(err));
 
             // Change back to details
-            setDetails(true);
+            setIsDefault(true);
           }}
         >
           <Edit />
-          Save
+          Add
         </button>
       </div>
     </div>
   );
 
-  return details ? detailsCard : editCard;
+  return isDefault ? defaultCard : editCard;
 };
 
-export default EditDrinkCard;
+export default AddDrinkCard;

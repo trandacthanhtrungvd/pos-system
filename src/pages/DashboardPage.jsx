@@ -161,14 +161,14 @@ const DashboardPage = () => {
           />
           <SummaryCard
             icon={<Order />}
-            iconColor={"accents-blue"}
+            iconColor={"accents-orange"}
             title={"Total Order"}
             value={"23,456"}
             trend={"-12.40"}
           />
           <SummaryCard
             icon={<Customer />}
-            iconColor={"accents-blues"}
+            iconColor={"accents-blue"}
             title={"Total Customer"}
             value={"1,234"}
             trend={"+2.40"}
@@ -213,19 +213,34 @@ const DashboardPage = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-1/4 flex-shrink-0 flex-col rounded-lg bg-base-dark-bg-2 p-6">
-        <div>
-          <div className="text-heading-h1">Most Ordered</div>
+      <div className="flex h-full w-1/4 flex-col justify-between gap-4">
+        <div className="flex h-full flex-col overflow-hidden rounded-lg bg-base-dark-bg-2 p-6">
+          <div className="text-heading-h2">Most Ordered Drinks</div>
+          <hr className="my-4 border-base-dark-line" />
+          <div className="flex flex-col gap-6 overflow-auto no-scrollbar">
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+          </div>
         </div>
-        <hr className="my-4 border-base-dark-line" />
-        <div className="flex flex-col gap-6">
-          <MostOrderedDrink />
-          <MostOrderedDrink />
-          <MostOrderedDrink />
-          <MostOrderedDrink />
-          <MostOrderedDrink />
-          <MostOrderedDrink />
-          <MostOrderedDrink />
+        <div className="flex h-full flex-col overflow-hidden rounded-lg bg-base-dark-bg-2 p-6">
+          <div className="text-heading-h2">Most Ordered Rooms</div>
+          <hr className="my-4 border-base-dark-line" />
+          <div className="flex flex-col gap-6 overflow-auto no-scrollbar">
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+            <MostOrderedDrink />
+          </div>
         </div>
       </div>
     </div>
