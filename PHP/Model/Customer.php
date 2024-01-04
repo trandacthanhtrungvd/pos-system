@@ -2,7 +2,7 @@
 
 include_once "Connection.php";
 
-class Customer {
+class Customer extends User {
     private $code;
 
     function __construct($code) {
