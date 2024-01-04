@@ -3,8 +3,12 @@
 include_once "../Model/Manager.php";
 
 session_start();
-
-$manager = new Manager($_SESSION["manager"]);
-echo $manager->getRooms();
+if (isset($_SESSION["manager"])) {
+    $user = new Manager($_SESSION["manager"]);
+}
+else {
+    $customer = new Customer($_SESSION["customer"]);
+}
+echo $user->getRooms();
 
 ?>

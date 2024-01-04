@@ -16,6 +16,10 @@ class Connection {
         }
     }
 
+    function __destruct() {
+        $this->conn->close();
+    }
+
     function query($sql) {
         return $this->conn->query($sql);
     }

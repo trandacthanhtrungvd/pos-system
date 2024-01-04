@@ -24,7 +24,7 @@ class Branch {
 
     function get_all_rooms() {
         $room_num_list = array();
-        $sql = "SELECT `so_phong` FROM `phong`";
+        $sql = "SELECT `so_phong` FROM `phong` WHERE `ma_chi_nhanh` = $this->code";
         $conn = new Connection();
         if ($result = $conn->query($sql)) {
             $result_row = $result->fetch_row();
