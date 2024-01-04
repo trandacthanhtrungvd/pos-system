@@ -12,8 +12,8 @@ const MenuPage = ({ name = "Thanh Trung" }) => {
   const dateString = days[date.getDay()] + ", " + date.toUTCString().slice(5, 16);
 
   const OrderData = useContext(OrderContext);
-  const { orderedItems, setOrderedItems } = OrderData;
-  console.log(orderedItems);
+  const { orderedDrinks, setOrderedDrinks } = OrderData;
+  console.log(orderedDrinks);
 
   return (
     <>

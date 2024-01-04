@@ -5,34 +5,18 @@ import { Trash } from "@icons";
 import TextField from "@components/Form/TextField";
 import { OrderContext } from "@/App.jsx";
 
-const OrderedItem = ({ id, name, price, qty, notes }) => {
+const OrderedRoom = ({ id, name, price, time, amount }) => {
   const OrderData = useContext(OrderContext);
-  const { setOrderedDrinks } = OrderData;
+  const { setOrderedRoom } = OrderData;
 
   const handleDelete = () => {
-    setOrderedDrinks((prev) => prev.filter((item) => item.id != id));
-  };
-
-  const handleQtyChange = (e) => {
-    setOrderedDrinks((prev) =>
-      prev.map((item) => {
-        if (item.id == id) {
-          return { ...item, qty: e.target.value };
-        }
-        return item;
-      }),
-    );
-  };
-
-  const handleNotesChange = (e) => {
-    setOrderedDrinks((prev) =>
-      prev.map((item) => {
-        if (item.id == id) {
-          return { ...item, notes: e.target.value };
-        }
-        return item;
-      }),
-    );
+    setOrderedRoom({
+      id: "",
+      name: "",
+      price: 0,
+      time: Date(),
+      amount: 0,
+    });
   };
 
   return (
@@ -56,12 +40,7 @@ const OrderedItem = ({ id, name, price, qty, notes }) => {
         </div>
       </div>
       <div className="flex flex-grow justify-between">
-        <TextField
-          name={"order-notes"}
-          value={notes}
-          placeholder={"Order Notes"}
-          handleChange={handleNotesChange}
-        />
+        <div>{time}</div>
         <button
           id={id}
           className="ml-4 rounded-lg border border-primary p-3 text-primary"
@@ -74,10 +53,10 @@ const OrderedItem = ({ id, name, price, qty, notes }) => {
   );
 };
 
-OrderedItem.propTypes = {
+OrderedRoom.propTypes = {
   name: PropTypes.string,
   price: PropTypes.number,
   image: PropTypes.string,
 };
 
-export default OrderedItem;
+export default OrderedRoom;

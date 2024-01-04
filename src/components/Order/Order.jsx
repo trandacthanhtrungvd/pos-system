@@ -6,7 +6,7 @@ import { OrderContext } from "@/App.jsx";
 
 const Order = () => {
   const OrderData = useContext(OrderContext);
-  const { orderedItems } = OrderData;
+  const { orderedDrinks } = OrderData;
 
   return (
     <div className="flex h-full w-[409px] flex-shrink-0 flex-col bg-base-dark-bg-2 p-6 font-barlow text-white">
@@ -20,7 +20,7 @@ const Order = () => {
       </div>
       <hr />
       <div className="mb-4 overflow-auto no-scrollbar">
-        {orderedItems.map((item, index) => (
+        {orderedDrinks.map((item, index) => (
           <OrderedItem
             key={index}
             id={item.id}
@@ -35,7 +35,7 @@ const Order = () => {
       <div className="my-2 flex justify-between">
         <div>Tổng</div>
         <div>
-          {parseFloat(orderedItems.reduce((prev, curr) => {
+          {parseFloat(orderedDrinks.reduce((prev, curr) => {
             return prev + curr.price * curr.qty;
           }, 0)).toFixed(2)}
         </div>

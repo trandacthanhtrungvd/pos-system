@@ -16,7 +16,15 @@ export const DrinksMenuContext = createContext();
 export const RoomsMenuContext = createContext();
 
 function App() {
-  const [orderedItems, setOrderedItems] = useState([]);
+  const [orderedDrinks, setOrderedDrinks] = useState([]);
+  const [orderedRoom, setOrderedRoom] = useState({
+    id: "",
+    name: "",
+    price: 0,
+    start_date: Date(),
+    start_hour: 0,
+    amount: 0,
+  });
   const [drinksMenu, setDrinksMenu] = useState([]);
   const [roomsMenu, setRoomsMenu] = useState([]);
 
@@ -34,7 +42,9 @@ function App() {
   }, []);
 
   return (
-    <OrderContext.Provider value={{ orderedItems, setOrderedItems }}>
+    <OrderContext.Provider
+      value={{ orderedDrinks, setOrderedDrinks, orderedRoom, setOrderedRoom }}
+    >
       <DrinksMenuContext.Provider value={{ drinksMenu, setDrinksMenu }}>
         <RoomsMenuContext.Provider value={{ roomsMenu, setRoomsMenu }}>
           <div className="flex h-screen w-full overflow-hidden bg-[#dcdcdc]">

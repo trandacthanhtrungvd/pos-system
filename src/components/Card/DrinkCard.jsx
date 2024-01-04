@@ -5,9 +5,9 @@ import { OrderContext } from "@/App.jsx";
 
 const DrinkCard = ({ id, image, name, price }) => {
   const OrderData = useContext(OrderContext);
-  const { setOrderedItems } = OrderData;
+  const { setOrderedDrinks } = OrderData;
   const handleAddClick = () => {
-    setOrderedItems((prev) => {
+    setOrderedDrinks((prev) => {
       let curr = [];
       let found = false;
       prev.forEach((item) => {
